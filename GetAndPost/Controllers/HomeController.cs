@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GetAndPost.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,23 @@ namespace GetAndPost.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(Author author)
         {
-            return View();
-        }
 
-        public ActionResult About()
+            return View(author);
+        }
+        [HttpPost]
+        public string Array(List<string> names)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            string fin = "";
+            for (int i = 0; i < names.Count; i++)
+            {
+                fin += names[i] + ";  ";
+            }
+            return fin;
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+    
     }
 }
+
+       
